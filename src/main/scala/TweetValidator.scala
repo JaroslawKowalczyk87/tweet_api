@@ -11,9 +11,9 @@ import system.dispatcher
 
 class TweetValidator extends Actor with ActorLogging with TweetJsonProtocol {
 
-  val config_tweet_ui = ConfigFactory.load("application.conf").getConfig("urls.sentiment-analysis")
-  val url = config_tweet_ui.getString("url")
-  val port = config_tweet_ui.getString("port")
+  val config_sentiment_analysis = ConfigFactory.load("application.conf").getConfig("urls.sentiment-analysis")
+  val url = config_sentiment_analysis.getString("url")
+  val port = config_sentiment_analysis.getString("port")
 
   override def receive: Receive = {
     case Tweet(content) =>
