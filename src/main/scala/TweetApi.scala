@@ -24,8 +24,6 @@ object TweetApi extends App with TweetJsonProtocol with SprayJsonSupport {
 
   val tweetValidator = system.actorOf(Props[TweetValidator], "tweetValidator")
 
-  tweetValidator ! "just a try"
-
   val asyncRequestHandler: HttpRequest => Future[HttpResponse] = {
     case HttpRequest(HttpMethods.POST, Uri.Path("/api/analysis"),_,entity,_) =>
       system.log.info("Got a Http Request with a content to analyze")
